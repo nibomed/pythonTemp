@@ -1,16 +1,16 @@
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 file = open("data.txt", "r")
  
-data = []
+plotingX = [];
+plotingY = [];
 for line in file:
     line = line.strip('\n')
     elements = line.split(";")
     dateStr = elements[0]
-    class element:
-        date = datetime.strptime(elements[0], "%Y%m%d %H%M%S %f0");
-        value = float(elements[1]);
-    data.append(element);
+    plotingX.append(datetime.strptime(elements[0], '%Y%m%d %H%M%S %f0'))
+    plotingY.append(float(elements[1]))
    
-for element in data:
-    print(element.date, ">", element.value)
+plt.plot(plotingX, plotingY, 'r.')
+plt.show();
